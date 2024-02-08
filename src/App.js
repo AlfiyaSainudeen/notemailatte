@@ -1,28 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import Mailer from './mailer';
-import Mail from './Mail';
-import MessageForm from './Message/Message';
-import AttendanceMarking from './Attendence/Attendence';
-import { NotificationProvider } from './Nottification/NotificationContext';
-import Admin from './Nottification/Admin';
-import Student from './Nottification/Student';
-import Teacher from './Nottification/Teacher';
-function App() {
-  return (
-    <div className="App">
-   {/* <Mailer/>
-   <Mail/> */}
-   <MessageForm/>
-   <AttendanceMarking/>
-   <NotificationProvider>
-    <Admin/>
-    <Student/>
-    <Teacher/>
-   </NotificationProvider>
-   
-    </div>
-  );
-}
+import React from 'react';
+import { MessageProvider } from './MessageContext';
+import MessageComponent from './MessageComponent';
+
+const App = () => {
+    return (
+        <MessageProvider>
+            <div>
+                <h1>Admin Dashboard</h1>
+                <MessageComponent isAdmin />
+            </div>
+            <div>
+                <h1>Teacher Dashboard</h1>
+                <MessageComponent />
+            </div>
+            <div>
+                <h1>Student Dashboard</h1>
+                <MessageComponent />
+            </div>
+        </MessageProvider>
+    );
+};
 
 export default App;
